@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content" class="container my-3">
+    <div class="my-3 border-bottom">
+        <div>
+            <h4>회원가입</h4>
+        </div>
+    </div>
+    <form th:action="@{/user/signup}" th:object="${userDTO}" method="post">
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+        <div class="mb-3">
+            <label th:for="userName" class="form-label">이름</label>
+            <input type="text" th:field="*{userName}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label th:for="birthDate" class="form-label">생년월일</label>
+            <input type="date" th:field="*{birthDate}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label th:for="phoneNumber" class="form-label">전화번호</label>
+            <input type="tel" th:field="*{phoneNumber}" class="form-control" pattern="^01(?:0|1|[6-9])[.-]?(\d{3}|\d{4})[.-]?(\d{4})$">
+        </div>
+        <div class="mb-3">
+            <label th:for="gender" class="form-label">성별 : </label>
+            <input type="radio" th:field="*{gender}" value="male">남성
+            <input type="radio" th:field="*{gender}" value="female">여성
+        </div>
+        <div class="mb-3">
+            <label th:for="email" class="form-label">이메일</label>
+            <input type="email" th:field="*{email}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label th:for="nickName" class="form-label">닉네임</label>
+            <input type="text" th:field="*{nickName}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label th:for="userId" class="form-label">ID</label>
+            <input type="text" th:field="*{userId}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label th:for="password1" class="form-label">비밀번호</label>
+            <input type="password" th:field="*{password1}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label th:for="password2" class="form-label">비밀번호 확인</label>
+            <input type="password" th:field="*{password2}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">회원가입</button>
+    </form>
+</div>
+</html>
